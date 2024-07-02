@@ -1,0 +1,105 @@
+@keyframes gradientAnim {
+    0% {
+        background: linear-gradient(to top left, rgb(231, 68, 68), rgb(171, 54, 244));
+    }
+    50% {
+        background: linear-gradient(to bottom right, rgb(154, 91, 91), rgb(212, 142, 255));
+    }
+    100% {
+        background: linear-gradient(to top left, rgb(64, 218, 53), rgb(10, 74, 104));
+    }
+}
+
+body{
+    background: linear-gradient(to top left, rgb(133, 197, 216), rgb(236, 143, 12));
+    font-family: "Lato", Arial, Helvetica;
+    color: white;
+    background-repeat: no-repeat;
+    font-family: "Rajdhani", Arial, Helvetica, sans-serif;
+    animation: gradientAnim 6s linear 2s infinite;
+}
+
+hr{
+    height: 2px;
+    box-shadow: 0px 0px 10px black;
+}
+
+.header{
+    text-align: center;
+    color: rgb(6, 233, 33);
+    text-shadow: 2px 2px 4px black;
+    background: linear-gradient(to top right, rgba(209, 143, 143, 0), rgb(194, 123, 238));
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header h1{
+    font-family: "Archivo Black", sans-serif;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container{
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px black;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.Register, .Login {
+    background: linear-gradient(to bottom, #77b5ccd8, #91a3aa00);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 45%;
+    margin-right: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.container h1{
+    font-family: "Archivo Black", sans-serif;
+    color: rgb(201, 201, 203);
+}
+
+.Register:hover, .Login:hover {
+    transform: scale(1.05);
+}
+
+input[type="text"], input[type="password"] {
+    margin-top: 3px;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type="checkbox"] {
+    margin-top: 15px;
+}
+
+button {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 7px;
+    background: linear-gradient(to top right, rgb(83, 220, 14), rgb(3, 228, 224));
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 4px black;
+}
+
+button:hover {
+    background: linear-gradient(to top right, rgb(40, 111, 7),rgb(8, 159, 156));
+}

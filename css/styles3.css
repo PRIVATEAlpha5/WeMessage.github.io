@@ -1,0 +1,73 @@
+@keyframes gradientAnim {
+    0% {
+        background: linear-gradient(to top left, rgb(231, 68, 68), rgb(171, 54, 244));
+    }
+    50% {
+        background: linear-gradient(to bottom right, rgb(154, 91, 91), rgb(212, 142, 255));
+    }
+    100% {
+        background: linear-gradient(to top left, rgb(64, 218, 53), rgb(10, 74, 104));
+    }
+}
+
+body{
+    background: linear-gradient(to top left, rgb(133, 197, 216), rgb(236, 143, 12));
+    font-family: "Lato", Arial, Helvetica;
+    color: white;
+    font-family: "Rajdhani", Arial, Helvetica, sans-serif;
+    animation: gradientAnim 6s linear 2s infinite;
+    height: 1000vh;
+    margin: 0;
+    text-align: center;
+    display: flex;
+    justify-content: flex-start;  
+    flex-direction: column;
+    
+}
+
+.container-1{
+    font-family: "Archivo Black", sans-serif;
+    text-align: center;
+    text-shadow: 2px 2px 4px black;
+    background: linear-gradient(to top, rgba(105, 232, 105, 0), rgb(160, 239, 160));
+    padding: 10px;
+    width:100%;
+}
+
+.container-1 h1{
+    font-family: "Archivo Black", sans-serif;
+    color: rgb(53, 228, 37);
+}
+
+.c3-createpost{
+    border: 5px solid #ccc;
+    border-radius: 3px;
+    padding : 5px;
+    box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.2);
+    margin:10px;
+    text-shadow: none;
+    background: linear-gradient(to top right, rgb(21, 177, 52), rgb(73, 35, 225));
+    color: azure;
+}
+
+.container-2 h1{
+    text-shadow: 2px 2px 4px black;
+}
+
+button {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 7px;
+    background: linear-gradient(to top right, rgb(83, 220, 14), rgb(3, 228, 224));
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 4px black;
+}
+
+button:hover {
+    background: linear-gradient(to top right, rgb(40, 111, 7),rgb(8, 159, 156));
+}

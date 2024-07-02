@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page/Post</title>
+    <link rel="stylesheet" href="css\styles2.css">
+    <link rel="icon" href="images\WeMessage_Logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container-1">
+        <h1>Pagina di Post</h1>
+
+        <div>
+            <button onclick="goToMessages()">Vai ai messaggi</button>
+        </div>
+
+        <!-- bottone logout -->
+        <div>
+            <button onclick="logout()">logout</button>
+        </div>
+        <hr>
+    </div>
+
+    <!-- benvenuto X, dove X è il valore recuperato da localstorage -->
+    <div class="container-2">
+        <div>
+            <h1>Benvenuto "<span id="valore_localstorage"></span>"!</h1>
+        </div>
+
+        <!-- form di creazione post -->
+        <div>
+            <h2>Crea una post!</h2>
+            <h3>Descrizione:</h3><br>
+            <input type="text" id="descrizione"><br>
+            <br>
+            <button onclick="crea_post()">crea post</button>
+        </div>
+        <hr>
+    </div>
+
+    
+
+    <div class="container-3">
+    <!-- lista di post -->
+    <h1>Lista di post:</h1>
+        <div id="lista_post" style="display: flex; flex-direction: column; align-items: center;">
+
+        </div>
+    </div>
+
+    <script>
+        const username = localStorage.getItem("username")
+
+        document.getElementById("valore_localstorage").innerHTML = username
+
+        function logout() {
+            localStorage.clear()
+            window.location.href = 'index.html'
+        }
+
+        async function carica_post() {
+            const request = await fetch("http://127.0.0.1:8000/api/home")
+            const risposta = await request.json()
+
+            console.log(risposta)
+
+            document.getElementById("lista_post").innerHTML = ""
+
+            for (let i = 0; i < risposta.length; i++) {
+                document.getElementById("lista_post").innerHTML += `
+                <div class="c3-createpost">
+                    <div class="c3-box">
+                        <h2>${risposta[i].auth}</h2>
+                        <p>${risposta[i].content}</p>
+                    </div>
+                </div>
+            `
+            }
+        }
+
+        async function crea_post() {
+            const content = document.getElementById("descrizione").value
+            
+            const request = await fetch(`http://127.0.0.1:8000/api/create_post/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    auth: username,
+                    content: content
+                })
+            })
+            /* qua la richiesta fatta la trasformo in json visualizzabile*/
+            const risposta = await request.json()
+            console.log(risposta)
+            // aggiornami i post
+            carica_post()
+        }
+
+        function goToMessages(){
+            window.location.href = 'message.html'
+        }
+
+        carica_post()
+    </script>
+</body>
+
+</html>

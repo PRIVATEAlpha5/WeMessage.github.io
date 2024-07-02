@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+    <link rel="stylesheet" href="css\styles3.css">
+    <link rel="icon" href="images\WeMessage_Logo.png" type="image/x-icon">
+</head>
+<body>
+
+    <div class="container-1">
+        <div>
+            <h1>Benvenuto "<span id="valore_localstorage">"</span>!</h1>
+        </div>
+
+        <div>
+            <button onclick="goToPost()">Vai ai post</button>
+        </div>
+
+        <div>
+            <h2>Invia un messaggio!</h2>
+            <h3>A chi lo vuoi inviare?</h3>
+            <select id="receiver">
+                <option value="vabe">vabe</option>
+                <option value="Manu_Heto">Manu_Heto</option>
+                <option value="Jojo">Jojo</option>
+                <option value="MatthewGiocaFifa">MatthewGiocaFifa</option>
+                <option value="Vita Rosa">Vita Rosa</option>
+                <option value="PRIVATE_ALPHA">PRIVATE_ALPHA</option>
+                <option value="Fed_Tommaso">Fed_Tommaso</option>
+                <option value="TeroneVegas30">TeroneVegas30</option>
+            </select>
+
+            <br>
+            <input type="text" id="message_text">
+            <button onclick="create_message()">Invio!</button><br>
+        </div>
+    </div>
+
+    <div class="container-2">
+
+        <h1>Lista di messaggi ricevuti:</h1>
+
+        <div id="message_container" style="display: flex; flex-direction: column; align-items: center;">
+        
+        </div>
+    </div>
+
+    <script>
+
+        const username = localStorage.getItem("username")
+        document.getElementById("valore_localstorage").innerHTML = username
+
+        async function carica_message(){
+            const request =  await fetch(`http://127.0.0.1:8000/api/read_message/${username}`)
+            const risposta = await request.json()
+
+            console.log(risposta)
+            
+            document.getElementById("message_container").innerHTML = ""
+
+            for (let i = 0; i < risposta.length; i++) {
+                document.getElementById("message_container").innerHTML += `
+                <div class="c3-createpost">
+                    <h2>Da: ${risposta[i].sender}</h3>
+                    <h3>Messaggio:<br>
+                        "${risposta[i].message_text}"</h3>
+                    <p>IL ${risposta[i].timestamp}</p>
+                </div>
+            `
+            }
+        }
+
+        
+        async function create_message(){
+            const receiver = document.getElementById("receiver").value
+            const message_text = document.getElementById("message_text").value
+        
+            const request = await fetch(`http://127.0.0.1:8000/api/send_message/${username}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    receiver: receiver,
+                    message_text: message_text
+                })
+            })
+            
+            const risposta = await request.json()
+            carica_message()
+        }
+
+        function goToPost(){
+            window.location.href = 'home.html'
+        }
+
+        carica_message()
+    </script>
+</body>
+</html>

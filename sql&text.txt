@@ -1,0 +1,68 @@
+// SQL //
+
+CREATE DATABASE socialnet;
+USE socialnet;
+
+CREATE TABLE users(
+    username VARCHAR(10) PRIMARY KEY,
+    nome VARCHAR(10),
+    cognome VARCHAR(10),
+    password VARCHAR(16)
+)
+
+CREATE TABLE posts(
+    postID INT AUTO_INCREMENT PRIMARY KEY,
+    auth VARCHAR(10),
+    content VARCHAR(500),
+    FOREIGN KEY posts(auth) REFERENCES users(username)
+)
+
+CREATE TABLE messages(
+    id_message INT PRIMARY KEY AUTO_INCREMENT,
+    sender VARCHAR(30),
+    receiver VARCHAR(30),
+    message_text VARCHAR(250) NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY messages(sender) REFERENCES users(username),
+    FOREIGN KEY messages(receiver) REFERENCES users(username)
+)
+
+// SQL - USERS //
+
+INSERT INTO `users` (`username`, `nome`, `cognome`, `password`) VALUES
+('Fed_Tommaso', 'Federico', 'Tommaso', 'Bellagiggio'),
+('Jojo', 'Jotaro', 'Kujo', 'JJBA123'),
+('Manu_Heto', 'Manu', 'Heto', 'HElla90'),
+('MatthewGiocaFifa', 'Matthew', 'Vristosk', 'FifaForever11'),
+('PRIVATE_ALPHA', 'Jan Ivan K', 'Aquino', 'StrongMan64'),
+('TeroneVegas30', 'Terone', 'Vegas', 'GamingBaby$S'),
+('vabe', 'Pablo', 'Rodriguez', 'Vado90'),
+('Vita Rosa', 'Rosa', 'Bheta', 'LondonUK_Rosa');
+
+// SQL - POSTS //
+
+INSERT INTO `posts` (`postID`, `auth`, `content`) VALUES
+(1, 'Manu_Heto', 'Ciao!'),
+(2, 'vabe', 'Bella di vedere te anche qua sul sito!'),
+(3, 'Jojo', 'Where is Dio?'),
+(4, 'Jojo', 'Hello???'),
+(5, 'Fed_Tommaso', 'Bella Parmiggiano, reggiano! Migliorate sto sito!'),
+(6, 'PRIVATE_ALPHA', 'Salve, creatore qua! Non c\'ho tanto tempo a disposizione nel miglioramento del sito. Scusate per il disaggio...');
+
+
+// SQL - MESSAGES //
+
+INSERT INTO `messages` (`id_messages`, `sender`, `receiver`, `message_text`, `timestamp`) VALUES
+(8, 'Manu_Heto', 'vabe', 'Prova Prova', '2024-07-01 16:28:14'),
+(9, 'Manu_Heto', 'vabe', 'prova', '2024-07-01 16:36:25'),
+(10, 'PRIVATE_ALPHA', 'vabe', 'Salve vabe!', '2024-07-02 15:19:38'),
+(11, 'PRIVATE_ALPHA', 'vabe', 'Salve vabe!', '2024-07-02 15:20:07'),
+(12, 'PRIVATE_ALPHA', 'vabe', 'Come stai?', '2024-07-02 15:21:49'),
+(13, 'PRIVATE_ALPHA', 'vabe', 'Come stai?', '2024-07-02 15:23:15'),
+(14, 'PRIVATE_ALPHA', 'Fed_Tommaso', 'dovrei provare qualcosa?', '2024-07-02 15:24:02'),
+(15, 'vabe', 'PRIVATE_ALPHA', 'ma salve!', '2024-07-02 15:24:46'),
+(17, 'vabe', 'Manu_Heto', 'Salve, come stai?', '2024-07-02 16:11:34');
+
+
+NOTA: Mi scuso per il disaggio di com'è andato sto compito, almeno ho aggiustato il rimanente errore e ho implementato il sito con CSS. Spero che sia abbastanza...
+

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeMessage!</title>
+    <link rel="stylesheet" href="css\styles1.css">
+    <link rel="icon" href="images\WeMessage_Logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+</head>
+
+<body style="margin-left: 2rem;">
+
+    <header>
+        <div class="header">
+            <h1>WeMessage!</h1>
+            <h3>A parody of WeChat... kind of. I just tried my best!</h3>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="Register">
+                <hr>
+                <h1>Registrazione</h1>
+                <hr>
+                <h2>Username:</h2>
+                <input type="text" id="username">
+                <br>
+                <h2>Nome:</h2>
+                <input type="text" id="nome">
+                <br>
+                <h2>Cognome:</h2>
+                <input type="text" id="cognome">
+                <br>
+                <h2>Password:</h2>
+                <input type="password" id="password">
+                <br>
+                <input type="checkbox" onclick="show_password_res()"><strong>Show Password</strong>
+                <br>
+                <button onclick="registrazione()"> Registrati </button>
+            </div>
+
+            <div id="risposta"></div>
+
+            <div class="Login">
+                <hr>
+                <h1>Login</h1>
+                <hr>
+                <h2>Username:</h2>
+                <input type="text" id="username_login">
+                <h2>Password:</h2>
+                <input type="password" id="password_login">
+                <br>
+                <input type="checkbox" onclick="show_password()"><strong>Show Password</strong>
+                <br>
+                <button onclick="login()">Accedi</button>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        async function registrazione() {
+            const username = document.getElementById("username").value
+            const nome = document.getElementById("nome").value
+            const cognome = document.getElementById("cognome").value
+            const password = document.getElementById("password").value
+            const request = await fetch("http://127.0.0.1:8000/api/register", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: username,
+                    nome: nome,
+                    cognome: cognome,
+                    password: password
+                })
+            })
+            const risposta = await request.json()
+            
+            window.alert("Utente creato con succeso! Adesso vai sulla Login.");
+        }
+
+        async function login(){
+            const username_login = document.getElementById("username_login").value
+            const password_login = document.getElementById("password_login").value
+
+            const request = await fetch(`http://127.0.0.1:8000/api/user/${username_login}`)
+            const risposta = await request.json();
+
+            console.log(risposta)
+
+            if (risposta.username == username_login && risposta.password == password_login){
+                localStorage.setItem('username', username_login)
+                window.location.href = 'home.html'
+            }
+        }
+
+        async function show_password_res(){
+            const password = document.getElementById("password");
+            if (password.type === "password"){
+                password.type = "text";
+            }else{
+                password.type = "password";
+                checkbox.removeAttribute('Checked');
+            }
+        }
+
+        async function show_password(){
+            const password = document.getElementById("password_login");
+            if (password.type === "password"){
+                password.type = "text";
+            }else{
+                password.type = "password";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

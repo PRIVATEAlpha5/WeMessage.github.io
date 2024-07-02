@@ -1,0 +1,107 @@
+@keyframes gradientAnim {
+    0% {
+        background: linear-gradient(to top left, rgb(231, 68, 68), rgb(171, 54, 244));
+    }
+    25% {
+        background: linear-gradient(to bottom right, rgb(162, 193, 23), rgb(45, 16, 175));
+    }
+    50% {
+        background: linear-gradient(to bottom right, rgb(154, 91, 91), rgb(212, 142, 255));
+    }
+    75%{
+        background: linear-gradient(to bottom right, rgb(248, 215, 215), rgb(66, 66, 66));
+    }
+    100% {
+        background: linear-gradient(to top left, rgb(64, 218, 53), rgb(10, 74, 104));
+    }
+}
+
+body{
+    background: linear-gradient(to top left, rgb(133, 197, 216), rgb(236, 143, 12));
+    font-family: "Lato", Arial, Helvetica;
+    color: white;
+    background-repeat: no-repeat;
+    font-family: "Rajdhani", Arial, Helvetica, sans-serif;
+    animation: gradientAnim 6s linear 2s infinite;
+    height: 100%;
+    margin: 0;
+    text-align: center;
+    display: flex;
+    justify-content:flex-start;  
+    flex-direction: column;
+}
+
+.container-1{
+    font-family: "Archivo Black", sans-serif;
+    text-align: center;
+    color: rgb(52, 166, 42);
+    text-shadow: 2px 2px 4px black;
+    background: linear-gradient(to top, rgba(105, 232, 105), rgb(160, 239, 160));
+    padding: 10px;
+    width:100%;
+}
+
+.container-2{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 4px black;
+    background: linear-gradient(to top, rgba(105, 232, 105, 0), rgb(105, 232, 105));
+    padding: 10px;
+    width:100%;
+}
+
+.container-2 h1{
+    color: rgb(101, 209, 173);
+    font-family: "Archivo Black", sans-serif;
+}
+
+button {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 7px;
+    background: linear-gradient(to top right, rgb(83, 220, 14), rgb(3, 228, 224));
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 4px black;
+}
+
+.container-3{
+    text-shadow: 2px 2px 4px black;
+}
+
+.c3-createpost{
+    border: 5px solid #ccc;
+    border-radius: 3px;
+    padding : 5px;
+    box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.2);
+    margin:10px;
+}
+
+.c3-createpost h2{
+    color: rgb(255, 145, 123);
+}
+
+.c3-box{
+    box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to top right, rgb(88, 206, 233), rgb(74, 134, 245));
+    color: azure;
+    padding: 10px;
+}
+
+.container-3 h1{
+    font-family: "Archivo Black", sans-serif;
+    color: rgb(139, 238, 68);
+}
+
+hr{
+    height: 2px;
+    box-shadow: 0px 0px 10px black;
+}
+
+button:hover {
+    background: linear-gradient(to top right, rgb(40, 111, 7),rgb(8, 159, 156));
+}
